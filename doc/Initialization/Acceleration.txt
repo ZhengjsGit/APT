@@ -1,0 +1,18 @@
+NOTE: This file includes all methods for initial acceleration sampling.
+
+
+All the available values of Init_Aclr_Type are:
+Constant
+
+
+##########################################
+
+
+Init_Aclr_Type:	Constant
+Function Name:		GAPS_APT_SetParticleAcceleration_Constant
+Parameters:			Init_Aclr_Constant_Aclr0
+Note:				Cartesian coordinate
+Introduction:		Constant initial acceleration
+##########################################
+
+

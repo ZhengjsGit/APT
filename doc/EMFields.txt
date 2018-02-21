@@ -1,0 +1,235 @@
+NOTE: This file includes all information of available EM field configurations.
+
+
+All the available values of EMField_Type are:
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+
+
+##########################################
+
+
+EMField_Type:		0
+Name:				Uniform
+Function Name:		GAPS_APT_Field_Uniform
+Parameters:			EMField_Uniform_AngleEB
+Note:				MaxOrder:3
+Introduction:		Uniform E and B. B=(0,0,Bz), E=(0,Ey,Ez).
+##########################################
+
+
+EMField_Type:		1
+Name:				Tokamak
+Function Name:		GAPS_APT_Field_Tokamak
+Parameters:			EMField_Tokamak_R0,EMField_Tokamak_q,EMField_Tokamak_a
+Note:				MaxOrder:3
+Introduction:		Tokamak field with constant safety factor: see Phys. Plasmas 23, 062505 (2016)
+##########################################
+
+
+EMField_Type:		2
+Name:				TokamakRE
+Function Name:		GAPS_APT_Field_TokamakRE
+Parameters:			EMField_Tokamak_R0,EMField_Tokamak_q,EMField_Tokamak_a
+Note:				MaxOrder:-1
+Introduction:		Tokamak field for calculating runaway electrons with consistent field
+##########################################
+
+
+EMField_Type:		3
+Name:				RadNonUniform
+Function Name:		GAPS_APT_Field_RadNonUniform
+Parameters:			EMField_RadNonUniform_R0;
+Note:				MaxOrder:3
+Introduction:		A typical radial non-uniform electromagnetic field for benchmark, see Phys. Plasmas 20, 084503 (2013).
+##########################################
+
+
+EMField_Type:		4
+Name:				EarthDipole
+Function Name:		GAPS_APT_Field_EarthDipole
+Parameters:			EMField_EarthDipole_R0;
+Note:				MaxOrder:3
+Introduction:		An approximate magnetic field for earch dipole field, see arXiv:1609.07748  (2016).
+##########################################
+
+
+EMField_Type:		5
+Name:				EOscillator
+Function Name:		GAPS_APT_Field_EOscillator
+Parameters:			EMField_EOscillator_R0;
+Note:				MaxOrder:3
+Introduction:		Electric oscillator field 
+##########################################
+
+
+EMField_Type:		6
+Name:				MagMirrorChain
+Function Name:		GAPS_APT_Field_MagMirrorChain
+Parameters:			EMField_MagMirrorChain_Rm;EMField_MagMirrorChain_S;
+Note:				MaxOrder:3
+Introduction:		Magnetic mirror chain approximation field
+##########################################
+
+
+EMField_Type:		7
+Name:				EMbenchmark
+Function Name:		GAPS_APT_Field_EMbenchmark
+Parameters:			none
+Note:				order 1
+Introduction:		
+##########################################
+
+
+EMField_Type:		8
+Name:				hairer5_1
+Function Name:		GAPS_APT_Field_hairer5_1
+Parameters:			none
+Note:				order 1
+Introduction:		
+##########################################
+
+
+EMField_Type:		9
+Name:				hairerquad
+Function Name:		GAPS_APT_Field_hairerquad
+Parameters:			none
+Note:				quad
+Introduction:		
+##########################################
+
+
+EMField_Type:		10
+Name:				hairerrandom
+Function Name:		GAPS_APT_Field_hairerrandom
+Parameters:			none
+Note:				quad
+Introduction:		
+##########################################
+
+
+EMField_Type:		11
+Name:				EM_non_case1
+Function Name:		GAPS_APT_Field_EM_non_case1
+Parameters:			none
+Note:				???
+Introduction:		
+##########################################
+
+
+EMField_Type:		12
+Name:				EM_int_case1
+Function Name:		GAPS_APT_Field_EM_int_case1
+Parameters:			none
+Note:				???
+Introduction:		
+##########################################
+
+
+EMField_Type:		13
+Name:				EM_N_ed_case1
+Function Name:		GAPS_APT_Field_EM_N_ed_case1
+Parameters:			none
+Note:				energy drift, U is r^-2 - r^2 + r3 B is (3xy+3x)/r 
+Introduction:		
+##########################################
+
+
+EMField_Type:		14
+Name:				EM_N_ox_case1
+Function Name:		GAPS_APT_Field_EM_N_ox_case1
+Parameters:			none
+Note:				orbit X, U is type1 and B is (5cos(2phi) - 1 )/r^2
+Introduction:		
+##########################################
+
+
+EMField_Type:		15
+Name:				EM_N_rg_case1
+Function Name:		GAPS_APT_Field_EM_N_rg_case1
+Parameters:			none
+Note:				goog one, U is 4/3 r^3 - 3r^4) B is xx/2/r
+Introduction:		
+##########################################
+
+
+EMField_Type:		16
+Name:				EMhairerEquadBnc3
+Function Name:		GAPS_APT_Field_EMhairerEquadBnc3
+Parameters:			none
+Note:				???
+Introduction:		
+##########################################
+
+
+EMField_Type:		17
+Name:				EM_I_type1_case1
+Function Name:		GAPS_APT_Field_EM_I_type1_case1
+Parameters:			none
+Note:				U is ?
+Introduction:		
+##########################################
+
+
+EMField_Type:		18
+Name:				EM_I_type1_case2
+Function Name:		GAPS_APT_Field_EM_I_type1_case2
+Parameters:			none
+Note:				quad ?
+Introduction:		
+##########################################
+
+
+EMField_Type:		19
+Name:				Ksymng
+Function Name:		GAPS_APT_Field_Ksymng
+Parameters:			none
+Note:				quad ?
+Introduction:		
+##########################################
+
+
+EMField_Type:		20
+Name:				Henon
+Function Name:		GAPS_APT_Field_Henon
+Parameters:			none
+Note:				quad ?
+Introduction:		
+##########################################
+
+
+EMField_Type:		21
+Name:				Henon_ConstantB
+Function Name:		GAPS_APT_Field_Henon_ConstantB
+Parameters:			none
+Note:				quad ?
+Introduction:		
+##########################################
+
+
+EMField_Type:		22
+Name:				Henon_B
+Function Name:		GAPS_APT_Field_Henon_B
+Parameters:			none
+Note:				quad ?
+Introduction:		
+##########################################
+
+
+EMField_Type:		23
+Name:				uncompact
+Function Name:		GAPS_APT_Field_uncompact
+Parameters:			none
+Note:				quad ?
+Introduction:		
+##########################################
+
+
+EMField_Type:		24
+Name:				Henon_Heiles
+Function Name:		GAPS_APT_Field_Henon_Heiles
+Parameters:			none
+Note:				auto generated
+Introduction:		
+##########################################
+
+

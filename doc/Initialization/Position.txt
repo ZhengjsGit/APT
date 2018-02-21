@@ -1,0 +1,50 @@
+NOTE: This file includes all methods for initial positon sampling.
+
+
+All the available values of Init_X_Type are:
+Constant Cuboid Cylinder Torus ParabolicTorus
+
+
+##########################################
+
+
+Init_X_Type:		Constant
+Function Name:		GAPS_APT_SetParticlePostion_Constant
+Parameters:			Init_X_Constant_X0
+Note:				Cartesian coordinate
+Introduction:		Constant initial position
+##########################################
+
+
+Init_X_Type:		Cuboid
+Function Name:		GAPS_APT_SetParticlePostion_Cuboid
+Parameters:			Init_X_Cuboid_Boundaries
+Note:				6 boundaries
+Introduction:		Uniform distribution in cuboid region
+##########################################
+
+
+Init_X_Type:		Cylinder
+Function Name:		GAPS_APT_SetParticlePostion_Cylinder
+Parameters:			Init_X_Cylinder_Boundaries
+Note:				6 boundaries
+Introduction:		Uniform distribution in cylinder region
+##########################################
+
+
+Init_X_Type:		Torus
+Function Name:		GAPS_APT_SetParticlePostion_Torus
+Parameters:			Init_X_Torus_Boundaries,Init_X_Torus_MajorRadius
+Note:				6 boundaries
+Introduction:		Uniform distribution in Torus region
+##########################################
+
+
+Init_X_Type:		ParabolicTorus
+Function Name:		GAPS_APT_SetParticlePostion_ParabolicTorus
+Parameters:			Init_X_ParabolicTorus_rmax,Init_X_ParabolicTorus_MajorRadius
+Note:				Used for particle beam in tokamak
+Introduction:		Radial parabolic distribution in Tokamak:see arXiv:1611.02362  (2016).
+##########################################
+
+

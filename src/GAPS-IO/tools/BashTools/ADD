@@ -1,0 +1,15 @@
+###########################################################################################
+###                                 Add Inputs here!                                    ###
+###########################################################################################
+
+#			INPUTS		Type		Name			Information
+Add_Inputs	"NUM"		"double"	"B0"		 	"Characteristic Magnetic Field Intensity (T)"
+Add_Inputs	"NUM"		"size_t"	"num_steps"	 	"Number of steps you want to calculation"
+Add_Inputs	"NUM"		"long"		"num_people"	"Number of people on the earth"
+
+#			INPUTS		Type		Dims		Name			Information
+Add_Inputs	"ARRAY"		"double"	"3"			"x0"		 	"Initial position (m); x0={x,y,z}"
+Add_Inputs	"ARRAY"		"char"		"100"		"OutputName" 	"Name of the output file"
+
+#			INPUTS		Type		Input_Num	Output_Num		Name			Information
+Add_Inputs	"FUNC"		""			"3"			"3"				"Func_B"		"Function of magnetic field"

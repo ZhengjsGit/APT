@@ -1,0 +1,181 @@
+###########################################################################################
+###                                 Add Inputs here!                                    ###
+###########################################################################################
+
+#				<Type>		<Dim>		<Name>										<Information>
+
+#APT vital parameters DO NOT change !
+
+Add_Inputs		double		1			Unit_B										"Unit of magnetic strength: Tesla"
+Add_Inputs		double		1			Unit_E										"Unit of electric strength: V/m"
+Add_Inputs		double		1			Unit_Time									"Unit of time: s"
+Add_Inputs		double		1			Unit_Space									"Unit of space: m"
+Add_Inputs		double		1			Unit_P										"Unit of momentum: kg*m/s"
+Add_Inputs		double		1			Unit_V										"Unit of velocity: m/s"
+Add_Inputs		double		1			Unit_A										"Unit of vector potential: kg*m/s/C"
+Add_Inputs		double		1			Unit_Phi									"Unit of scalar potential: J/C"
+Add_Inputs		double		1			Unit_Energy									"Unit of energy: J"
+Add_Inputs		double		1			Unit_Mass									"Unit of mass: kg"
+Add_Inputs		double		1			Unit_Charge									"Unit of charge: C"
+Add_Inputs		double		1			dT											"Step length of time: dimensionless"
+Add_Inputs		long		1			num_total_particles							"Number of particles simulated: dimensionless"
+Add_Inputs		long		1			SavePerNSteps								"Period of date outputing: dimensionless"
+#zhengjs
+Add_Inputs		long		1			SaveMode							"Period of date outputing: dimensionless"
+
+Add_Inputs		long		1			num_steps									"Number of iteration steps: dimensionless"
+Add_Inputs		long		1			num_steps_saved								"Number of steps saved: dimensionless"
+Add_Inputs		long		1			OpenDataSaving								"Open data saving if 'OpenDataSaving' is NOT 0."
+Add_Inputs		long		1			Open_Cal_Work								"Open calculation of work if 'Open_Cal_Work' is NOT 0."
+Add_Inputs		long		1			Open_Cal_Acceleration						"Open calculation of acceleration if 'Open_Cal_Acceleration' is NOT 0."
+
+#zhengjs
+Add_Inputs		double		1			PoincareInterval						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+Add_Inputs		double		2			PoincareDelta						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+Add_Inputs		double		1			HenonLambda						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+
+#Pusher
+Add_Inputs		long		1			Pusher_Type									"Select a pusher. See Config/doc/Pusher.txt."
+Add_Inputs		double		1			Pusher_RootFindingTol						"Set the minimum tolerence for root finding procedure."
+Add_Inputs		long		1			Pusher_RungeKutta_Dim						"Set the dimension of lorentz flow for RK methods, =3,4."
+Add_Inputs		long		1			Pusher_RungeKutta_Order						"Set the order of RK methods: =2,3,4"
+Add_Inputs		long		1			Pusher_NIntegral_N							"Set the number of intevals for numerical integral: should be positive even number, bigger number for more accurate results."
+Add_Inputs		long		1			Pusher_RECSA_GF4D_Order						"Set the order of explicit canonical symplectic algorithm based on generating funciton for 4D systems methods: =1,2,3"
+
+#EMField
+Add_Inputs		long		1			EMField_Type								"Select a electromagnetic field. See Config/doc/EMField.txt."
+Add_Inputs		long		1			EMField_CalConsistentField					"Open calculation of self-consistent field for corresponding fields."
+Add_Inputs		long		1			EMField_Cal_B								"Calculate magnetic field if 'EMField_Cal_B' is NOT 0."
+Add_Inputs		long		1			EMField_Cal_E								"Calculate electric field if 'EMField_Cal_E' is NOT 0."
+Add_Inputs		double		1			EMField_B0									"Reference strength of magnetic field."
+Add_Inputs		double		1			EMField_E0									"Reference strength of electric field."
+Add_Inputs		double		1			EMField_Uniform_AngleEB						"Angle between uniform magnetic and electric vector."
+Add_Inputs		double		1			EMField_Tokamak_R0							"Major radius for tokamak."
+Add_Inputs		double		1			EMField_Tokamak_q							"Safety factor of tokamak magnetic field"
+Add_Inputs		double		1			EMField_Tokamak_a							"Minor radius of tokamak"
+Add_Inputs		char		50			EMField_Discrete_Filename					"File name of discrete field data."
+Add_Inputs		double		1			EMField_RadNonUniform_R0					"Spatial scale for radial non-uniform electromagnetic field"
+Add_Inputs		double		1			EMField_EarthDipole_R0						"Spatial scale for earth dipole magnetic field"
+Add_Inputs		double		1			EMField_EOscillator_R0						"Spatial scale for electric oscillator field"
+Add_Inputs		double		1			EMField_MagMirrorChain_Rm					"Magnetic mirror ratio of magnetic mirror chain approximate field"
+Add_Inputs		double		1			EMField_MagMirrorChain_S					"Period on z-direction for magnetic chain approximate field"
+
+
+
+#ExtForce
+Add_Inputs		long		1			ExtForce_Cal_RadLarmor						"Calculate radiation force if 'ExtForce_Cal_RadLarmor' is NOT 0."
+Add_Inputs		double		1			ExtForce_RadLarmor_Const					"Constant coefficient of radiation force: = QE^3*(Unit_B)/(6*PI*EPSILON0*ME^2*C_LIGHT^3);"
+
+Add_Inputs		long		1			ExtForce_Cal_GCElecCollision				"Calculate guiding center collison friction of electrons"
+Add_Inputs		double		1			ExtForce_GCElecCollision_Const				"Constant coefficient of GC collision friction of electrons: = ne*QE^3*LnLambda/(4*PI*EPSILON0^2*ME*C_LIGHT^3*Unit_B);"
+Add_Inputs		double		1			ExtForce_GCElecCollision_Ne					"Electron density for GC collision friction of electrons"
+Add_Inputs		double		1			ExtForce_GCElecCollision_LnLambda			"Coulumb Log for GC collision friction of electrons"
+
+Add_Inputs		long		1			ExtForce_Cal_GCElecBremsstrahlung			"Calculate guiding center bremsstrahlung of electrons"
+Add_Inputs		double		1			ExtForce_GCElecBremsstrahlung_Const			"Constant coefficient of GC bremsstrahlung of electrons: (ne)*qe^3*(Zeff+1)/(137*4*M_PI^2*Unit_B*epsilon0^2*me*c^3);"
+Add_Inputs		double		1			ExtForce_GCElecBremsstrahlung_Ne			"Electron density for GC bremsstrahlung of electrons"
+Add_Inputs		double		1			ExtForce_GCElecBremsstrahlung_Zeff			"Effective background charge number for GC bremsstrahlung of electrons"
+
+#Init
+Add_Inputs		long		1			Init_Num_Particles							"Number of particles initialized."
+Add_Inputs		char		50			Init_Status_Type							"Select type of particle status initial sampling, AKA. Live or die. (Constant)"
+Add_Inputs		char		50			Init_Ptc_Type								"Select the sampling type of particle types. (Constant)"
+Add_Inputs		char		50			Init_X_Type									"Select type of position initial sampling."
+Add_Inputs		char		50			Init_P_Type									"Select type of momentum/velocity initial sampling."
+Add_Inputs		char		50			Init_Aclr_Type								"Select type of acceleration initial sampling"
+Add_Inputs		double		1			Init_X_Torus_MajorRadius					"Set major radius of uniform torus distribution."
+Add_Inputs		double		1			Init_X_ParabolicTorus_MajorRadius			"Set major radius of radial parabolic torus distribution."
+Add_Inputs		double		1			Init_X_ParabolicTorus_rmax					"Set maximum r of radial parabolic torus distribution."
+
+Add_Inputs		double		3			Init_X_Constant_X0						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+Add_Inputs		double		6			Init_X_Cuboid_Boundaries				 	"Set boundaries of cuboid distribution: {x0,x1,y0,y1,z0,z1}."
+Add_Inputs		double		6			Init_X_Cylinder_Boundaries				 	"Set boundaries of cylinder distribution: {R0,R1,Theta0,Theta1,Z0,Z1}."
+Add_Inputs		double		6			Init_X_Torus_Boundaries						"Set boundaries of torus distribution: {r0,r1,theta0,theta1,phi0,phi1}."
+Add_Inputs		double		1			Init_P_Maxwell_Temp							"Set temperature of Maxwell-Boltzmann distribution."
+Add_Inputs		double		3			Init_P_Constant_P0							"Set Cartesian coordinates for constant momentum:{px,py,pz}."
+Add_Inputs		double		6			Init_P_Gyrocenter_SampleRegion				"Set region of gyrocenter-type momentum sampling:{average energy,standard energy deviation,minimum pitch-angle,maximum pitch-angle,minimum gyrophase,maximum gyrophase}"
+Add_Inputs		double		3			Init_Aclr_Constant_Aclr0					"Set Cartesian coordinates for constant acceleration:{ax,ay,az}."
+Add_Inputs		double		1			Init_Status_Constant_IsDead					"Set all particle are living if this value is 0."
+Add_Inputs		double		2			Init_Ptc_Constant_ChargeMass				"Set charge and mass of all particles: {charge, mass}."
+
+Add_Inputs		double		6			Init_P_Cuboid_Boundaries				 	"Set boundaries of cuboid distribution: {vx0,vx1,vy0,vy1,vz0,vz1}."
+
+###########################################################################################
+###                                 Add Electromagnetic Fields here!                    ###
+###########################################################################################
+
+#				<Name>		<Parameters>					<Note>										<Information>
+Add_EMField		Uniform		"EMField_Uniform_AngleEB"		"MaxOrder:3"								"Uniform E and B. B=(0,0,Bz), E=(0,Ey,Ez)."
+Add_EMField		Tokamak		"EMField_Tokamak_R0,EMField_Tokamak_q,EMField_Tokamak_a"		"MaxOrder:3"	"Tokamak field with constant safety factor: see Phys. Plasmas 23, 062505 (2016)"
+Add_EMField		TokamakRE	"EMField_Tokamak_R0,EMField_Tokamak_q,EMField_Tokamak_a"		"MaxOrder:-1"	"Tokamak field for calculating runaway electrons with consistent field"
+Add_EMField    RadNonUniform    "EMField_RadNonUniform_R0;"    "MaxOrder:3"								"A typical radial non-uniform electromagnetic field for benchmark, see Phys. Plasmas 20, 084503 (2013)."
+Add_EMField    EarthDipole    "EMField_EarthDipole_R0;"    "MaxOrder:3"									"An approximate magnetic field for earch dipole field, see arXiv:1609.07748  (2016)."
+Add_EMField    EOscillator    "EMField_EOscillator_R0;"    "MaxOrder:3"									"Electric oscillator field "	
+Add_EMField    MagMirrorChain    "EMField_MagMirrorChain_Rm;EMField_MagMirrorChain_S;"    "MaxOrder:3"    "Magnetic mirror chain approximation field"
+
+#zhengjs
+Add_EMField	EMbenchmark		"none"	"order 1"
+Add_EMField	hairer5_1		"none"	"order 1"
+Add_EMField	hairerquad		"none"  "quad"
+Add_EMField	hairerrandom		"none"  "quad"
+Add_EMField	EM_non_case1		"none"	"???"
+Add_EMField	EM_int_case1		"none"  "???"
+Add_EMField	EM_N_ed_case1		"none"  "energy drift, U is r^-2 - r^2 + r3 B is (3xy+3x)/r "
+Add_EMField	EM_N_ox_case1		"none"  "orbit X, U is type1 and B is (5cos(2phi) - 1 )/r^2"
+Add_EMField	EM_N_rg_case1		"none"  "goog one, U is 4/3 r^3 - 3r^4) B is xx/2/r"
+Add_EMField	EMhairerEquadBnc3	"none"  "???"
+Add_EMField	EM_I_type1_case1	"none"  "U is ?"
+Add_EMField	EM_I_type1_case2	"none"  "quad ?"
+Add_EMField	Ksymng			"none"  "quad ?"
+Add_EMField	Henon			"none"  "quad ?"
+Add_EMField	Henon_ConstantB		"none"  "quad ?"
+Add_EMField	Henon_B		"none"  "quad ?"
+Add_EMField	uncompact		"none"  "quad ?"
+Add_EMField	Henon_Heiles			"none"  "auto generated"
+
+###########################################################################################
+###                                 Add External Forces here!                    ###
+###########################################################################################
+Add_ExtForce	RadLarmor	"ExtForce_RadLarmor_Const"		"Need acceleration"							"Radiation force model, see Phys. Plasmas 23, 062505 (2016)"
+Add_ExtForce	GCElecCollision			"ExtForce_GCElecCollision_Const,ExtForce_GCElecCollision_Ne"		"Need acceleration"		"Guiding center collision friction of electrons, see Phys. Plasmas 21, 064503 (2014) "
+Add_ExtForce	GCElecBremsstrahlung	"ExtForce_GCElecBremsstrahlung_Const,ExtForce_GCElecBremsstrahlung_Ne,ExtForce_GCElecBremsstrahlung_Zeff"	"Need acceleration"	"Guiding center bremsstrahlung of electrons, see Phys. Plasmas 21, 064503 (2014)"
+
+
+
+###########################################################################################
+###                                 Add Particle Pushers here!                    ###
+###########################################################################################
+Add_Pusher		RVPA_Cay3D	""								"Support force module"						"2-order RVPA based on Cayley map, see Ref. Phys. Plasmas 22 (2015), 044501"
+Add_Pusher		LCCSA_SymEuler	""							"Not Support force module"				"1-order symlectic Euler algorithm of LCCSA, see Ref. Phys. Plasmas 23, 122513 (2016)"
+Add_Pusher		RCSA_SymEuler	"Pusher_RootFindingTol"		"Not Support force module"				"1-order symlectic Euler algorithm for 3D, see Ref."
+Add_Pusher		RVPA_Exp3D	""								"Support force module"					"2-order RVPA based on exponential map, see Ref. Communications in Computational Physics 19, 1397 (2016)"
+Add_Pusher		RungeKutta	"Pusher_RungeKutta_Order,Pusher_RungeKutta_Dim"		"Support force module"					"2,3,4-order RK method for 3,4D Lorentz systems"
+
+Add_Pusher		RNCSA_4D	"Pusher_NIntegral_N"			"Support force module"					"relativistic non-canonical symlectic algorithm"
+Add_Pusher		RECSA_GF4D	"Pusher_RECSA_GF4D_Order"		"Not Support force module"				"Relativistic explicit canonical symplectic algorithm based on generating function for 4D system"
+Add_Pusher		LCCSA_IMP	"Pusher_RootFindingTol"			"Not Support force module"				"2-order implicit mid-point canonical symlectic algorithm of LCCSA, 4D"
+
+#zhengjs
+Add_Pusher		Regular_Boris	"simplest Boris algorithm"			"Not Support force module"				"2-order implicit"
+Add_Pusher		Onehalf_Boris	"another one"			"Not Support force module"				"2-order implicit"
+Add_Pusher		CSA_SymEuler	"another one"			"Not Support force module"				"2-order implicit"
+Add_Pusher		CSA_imEuler		"another one"			"Not Support force module"				"2-order implicit"
+
+
+
+###########################################################################################
+###                                 Add Initialization Methods here!                    ###
+###########################################################################################
+#				<Class>			<Name>		<Parameters>										<Note>										<Information>
+Add_InitMethod	X				Constant	"Init_X_Constant_X0"								"Cartesian coordinate"						"Constant initial position"
+Add_InitMethod	X				Cuboid		"Init_X_Cuboid_Boundaries"							"6 boundaries"								"Uniform distribution in cuboid region"
+Add_InitMethod	X				Cylinder	"Init_X_Cylinder_Boundaries"						"6 boundaries"								"Uniform distribution in cylinder region"
+Add_InitMethod	X				Torus		"Init_X_Torus_Boundaries,Init_X_Torus_MajorRadius"	"6 boundaries"								"Uniform distribution in Torus region"
+Add_InitMethod	X				ParabolicTorus	"Init_X_ParabolicTorus_rmax,Init_X_ParabolicTorus_MajorRadius"	"Used for particle beam in tokamak"		"Radial parabolic distribution in Tokamak:see arXiv:1611.02362  (2016)."
+
+Add_InitMethod	P				Constant	"Init_P_Constant_P0"								"Cartesian coordinate"						"Constant initial momentum"
+Add_InitMethod	P				Maxwell		"Init_P_Maxwell_Temp"								"Temperature"								"Maxwell-Boltzmann distribution"
+Add_InitMethod	P				Gyrocenter	"Init_P_Gyrocenter_SampleRegion"					"gyrocenter"								"Gyrocenter momentum distribution"
+#zhengjs
+Add_InitMethod	P				Cuboid	"Init_P_Gyrocenter_SampleRegion"					"gyrocenter"								"Gyrocenter momentum distribution"
+Add_InitMethod	Aclr			Constant	"Init_Aclr_Constant_Aclr0"							"Cartesian coordinate"						"Constant initial acceleration"

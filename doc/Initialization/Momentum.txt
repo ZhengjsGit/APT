@@ -1,0 +1,42 @@
+NOTE: This file includes all methods for initial momentum sampling.
+
+
+All the available values of Init_P_Type are:
+Constant Maxwell Gyrocenter Cuboid
+
+
+##########################################
+
+
+Init_P_Type:		Constant
+Function Name:		GAPS_APT_SetParticleMomentum_Constant
+Parameters:			Init_P_Constant_P0
+Note:				Cartesian coordinate
+Introduction:		Constant initial momentum
+##########################################
+
+
+Init_P_Type:		Maxwell
+Function Name:		GAPS_APT_SetParticleMomentum_Maxwell
+Parameters:			Init_P_Maxwell_Temp
+Note:				Temperature
+Introduction:		Maxwell-Boltzmann distribution
+##########################################
+
+
+Init_P_Type:		Gyrocenter
+Function Name:		GAPS_APT_SetParticleMomentum_Gyrocenter
+Parameters:			Init_P_Gyrocenter_SampleRegion
+Note:				gyrocenter
+Introduction:		Gyrocenter momentum distribution
+##########################################
+
+
+Init_P_Type:		Cuboid
+Function Name:		GAPS_APT_SetParticleMomentum_Cuboid
+Parameters:			Init_P_Gyrocenter_SampleRegion
+Note:				gyrocenter
+Introduction:		Gyrocenter momentum distribution
+##########################################
+
+

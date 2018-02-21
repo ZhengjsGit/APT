@@ -1,0 +1,118 @@
+NOTE: This file includes all information of available Pushers.
+
+
+All the available values of Pusher_Type are:
+0 1 2 3 4 5 6 7 8 9 10 11
+
+
+##########################################
+
+
+Pusher_Type:		0
+Name:				RVPA_Cay3D
+Function Name:		GAPS_APT_Pusher_RVPA_Cay3D
+Parameters:			
+Note:				Support force module
+Introduction:		2-order RVPA based on Cayley map, see Ref. Phys. Plasmas 22 (2015), 044501
+##########################################
+
+
+Pusher_Type:		1
+Name:				LCCSA_SymEuler
+Function Name:		GAPS_APT_Pusher_LCCSA_SymEuler
+Parameters:			
+Note:				Not Support force module
+Introduction:		1-order symlectic Euler algorithm of LCCSA, see Ref. Phys. Plasmas 23, 122513 (2016)
+##########################################
+
+
+Pusher_Type:		2
+Name:				RCSA_SymEuler
+Function Name:		GAPS_APT_Pusher_RCSA_SymEuler
+Parameters:			Pusher_RootFindingTol
+Note:				Not Support force module
+Introduction:		1-order symlectic Euler algorithm for 3D, see Ref.
+##########################################
+
+
+Pusher_Type:		3
+Name:				RVPA_Exp3D
+Function Name:		GAPS_APT_Pusher_RVPA_Exp3D
+Parameters:			
+Note:				Support force module
+Introduction:		2-order RVPA based on exponential map, see Ref. Communications in Computational Physics 19, 1397 (2016)
+##########################################
+
+
+Pusher_Type:		4
+Name:				RungeKutta
+Function Name:		GAPS_APT_Pusher_RungeKutta
+Parameters:			Pusher_RungeKutta_Order,Pusher_RungeKutta_Dim
+Note:				Support force module
+Introduction:		2,3,4-order RK method for 3,4D Lorentz systems
+##########################################
+
+
+Pusher_Type:		5
+Name:				RNCSA_4D
+Function Name:		GAPS_APT_Pusher_RNCSA_4D
+Parameters:			Pusher_NIntegral_N
+Note:				Support force module
+Introduction:		relativistic non-canonical symlectic algorithm
+##########################################
+
+
+Pusher_Type:		6
+Name:				RECSA_GF4D
+Function Name:		GAPS_APT_Pusher_RECSA_GF4D
+Parameters:			Pusher_RECSA_GF4D_Order
+Note:				Not Support force module
+Introduction:		Relativistic explicit canonical symplectic algorithm based on generating function for 4D system
+##########################################
+
+
+Pusher_Type:		7
+Name:				LCCSA_IMP
+Function Name:		GAPS_APT_Pusher_LCCSA_IMP
+Parameters:			Pusher_RootFindingTol
+Note:				Not Support force module
+Introduction:		2-order implicit mid-point canonical symlectic algorithm of LCCSA, 4D
+##########################################
+
+
+Pusher_Type:		8
+Name:				Regular_Boris
+Function Name:		GAPS_APT_Pusher_Regular_Boris
+Parameters:			simplest Boris algorithm
+Note:				Not Support force module
+Introduction:		2-order implicit
+##########################################
+
+
+Pusher_Type:		9
+Name:				Onehalf_Boris
+Function Name:		GAPS_APT_Pusher_Onehalf_Boris
+Parameters:			another one
+Note:				Not Support force module
+Introduction:		2-order implicit
+##########################################
+
+
+Pusher_Type:		10
+Name:				CSA_SymEuler
+Function Name:		GAPS_APT_Pusher_CSA_SymEuler
+Parameters:			another one
+Note:				Not Support force module
+Introduction:		2-order implicit
+##########################################
+
+
+Pusher_Type:		11
+Name:				CSA_imEuler
+Function Name:		GAPS_APT_Pusher_CSA_imEuler
+Parameters:			another one
+Note:				Not Support force module
+Introduction:		2-order implicit
+##########################################
+
+

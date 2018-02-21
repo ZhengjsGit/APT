@@ -1,0 +1,13 @@
+#define C_LIGHT 2.99792458e8
+#define EPSILON0 8.854187818e-12
+#define MU0 12.5663706144e-7
+#define QE 1.60217733e-19
+#define ME 9.10938215e-31
+
+#define SMALL_ENOUGH 1e-15
+#define MAX_IMPLICIT_ITERATION 1000000
+
+//#define EPSILON0 1.
+//#define MU0 1.
+
+
