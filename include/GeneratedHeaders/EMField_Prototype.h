@@ -25,3 +25,4 @@ int GAPS_APT_Field_Henon_ConstantB(double *pTensor,double *pSpaceTime4,int Order
 int GAPS_APT_Field_Henon_B(double *pTensor,double *pSpaceTime4,int Order,Gaps_IO_InputsContainer *pInputs);
 int GAPS_APT_Field_uncompact(double *pTensor,double *pSpaceTime4,int Order,Gaps_IO_InputsContainer *pInputs);
 int GAPS_APT_Field_Henon_Heiles(double *pTensor,double *pSpaceTime4,int Order,Gaps_IO_InputsContainer *pInputs);
+int GAPS_APT_Field_Hairer51(double *pTensor,double *pSpaceTime4,int Order,Gaps_IO_InputsContainer *pInputs);

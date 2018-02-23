@@ -12,3 +12,4 @@ int GAPS_APT_Pusher_Regular_Boris(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContaine
 int GAPS_APT_Pusher_Onehalf_Boris(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs);
 int GAPS_APT_Pusher_CSA_SymEuler(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs);
 int GAPS_APT_Pusher_CSA_imEuler(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs);
+int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs);
