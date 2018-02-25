@@ -1,0 +1,274 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8990,        265]
+NotebookOptionsPosition[      7115,        198]
+NotebookOutlinePosition[      8053,        231]
+CellTagsIndexPosition[      7849,        223]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Step 1: Load the \[OpenCurlyDoubleQuote]gapsAPTFieldGenC\
+\[CloseCurlyDoubleQuote] package", "Subsection",
+ CellChangeTimes->{{3.7105412602165527`*^9, 3.710541289448636*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "change", " ", "working", " ", "directory", " ", "to", " ", "package", " ",
+     "directory"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", "\"\<YourDirectory\>\"", "]"}], ";"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.7105827155943003`*^9, 3.710582809228359*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "gapsAPTFieldGenC`"}]], "Input",
+ CellChangeTimes->{{3.7105412424738903`*^9, 3.710541244217711*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "gapsAPTDefName"}]], "Input",
+ CellChangeTimes->{{3.710780382627677*^9, 3.710780409007321*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"gapsAPTDefName[name]\\n\tDefine the name of the new \
+electromagnetic field function.\\n\t\\n\tname is a string of the name of \
+field function.\\n\\n\tExample: gapsAPTDefName[\\\"Tokamak\\\"];\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.7107805407041283`*^9},
+ CellTags->"Info3710766140-3222684"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "gapsAPTDefST"}]], "Input",
+ CellChangeTimes->{{3.710780397153438*^9, 3.7107804149269876`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"gapsAPTDefST[corlist,cortype]\\n\tDefine the symbols of \
+spacetime coordinates used in the expressions of field functions.\\n\t\\n\t\
+corlist is a 4D list containing symbols for 4D spacetime coordinate; \\n\t\
+cortype is a string telling the type of spatial coordinate. \\n\tcortype can \
+be set as \\\"Cartesian\\\", or \\\"Cylindrical\\\".\\n\t\\n\tExample: \
+gapsAPTDefST[{t,R,Theta,Z},\\\"Cylindrical\\\"];\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.710780542977207*^9},
+ CellTags->"Info3710766142-3222684"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "gapsAPTDefParameters"}]], "Input",
+ CellChangeTimes->{{3.7107804183351717`*^9, 3.710780422669228*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"gapsAPTDefParameters[paralist]\\n\tDefine the extra parameters \
+needed by the electromagnetic function.\\n\tNotice that the scale paramters \
+for electric and magnetic field strength must be \\n\t\\\"B0\\\" and \\\"E0\\\
+\". Any other parameter except these two should be defined here.\\n\tThe \
+listed parameters should be single float number.\\n\\n\tparalist is a list of \
+strings containing all the extra parameters use in new function.\\n\t\\n\t\
+Example: gapsAPTDefParameters[{\\\"q\\\",\\\"a\\\",\\\"R0\\\"}];\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.710780545100173*^9},
+ CellTags->"Info3710766145-3222684"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "gapsAPTGenAllFiles"}]], "Input",
+ CellChangeTimes->{{3.710780431507207*^9, 3.710780434752709*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"gapsAPTGenAllFiles[A4,maxorder]\\n\tGenerate all the tensor \
+(with maximum order of maxorder) by use of A4, the 4D \\n\trepresentation of \
+potential field.\\n\tThis function outputs two files: 1, name.c, the c source \
+file the field function\\n\tbased on the standard of APT project; 2, \
+ADD_Field, the command file used in the \\n\tADD script of APT.\\n\\n\tA4 is \
+a 4D list of 4-potential field which is composed by the parameters, the \\n\t\
+coordinate symbols define by users, and the deflaut parameters B0 and E0.\\n\t\
+maxorder is an integer of the maximum order tensors supported by the new \
+function.\\n\\n\tExample: \\n\t\tAtokamak={0,\!\(\*FractionBox[\(B0\\\\ \
+R0\\\\ Z\), \(2\\\\ R\)]\),\!\(\*FractionBox[\(\(-B0\)\\\\ \
+\((\*SuperscriptBox[\(Z\), \(2\)] + \*SuperscriptBox[\((R - R0)\), \
+\(2\)])\)\), \(2\\\\ q\\\\ R\)]\) -\!\(\*FractionBox[\(E0\\\\ R0\), \(R\)]\) \
+t, \!\(\*FractionBox[\(\(-B0\)\\\\ R0\), \(2\)]\) \
+Log[\!\(\*FractionBox[\(R\), \(R0\)]\)]};\\n\t\t\
+gapsAPTGenAllFiles[Atokamak,3];\\n\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.710780547082305*^9},
+ CellTags->"Info3710766147-3222684"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Step 2: Define function name, coordinate symbols, and extra parameters\
+\>", "Subsection",
+ CellChangeTimes->{{3.71054129927273*^9, 3.710541347288822*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gapsAPTDefName", "[", "\"\<TokamakRE\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gapsAPTDefST", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"t", ",", "R", ",", "Theta", ",", "Z"}], "}"}], ",", 
+    "\"\<Cylindrical\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gapsAPTDefParameters", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<q\>\"", ",", "\"\<a\>\"", ",", "\"\<R0\>\""}], "}"}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.71054136071671*^9, 3.710541369834956*^9}, {
+  3.7105419642697973`*^9, 3.710541964606543*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Step 3: Write the expressions of 4D potential field", "Subsection",
+ CellChangeTimes->{{3.710541380200387*^9, 3.7105414106806173`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Atokamak", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{"0", ",", "\[IndentingNewLine]", 
+     FractionBox[
+      RowBox[{"B0", " ", "R0", " ", "Z"}], 
+      RowBox[{"2", " ", "R"}]], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", "B0"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["Z", "2"], "+", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"R", "-", "R0"}], ")"}], "2"]}], ")"}]}], 
+       RowBox[{"2", " ", "q", " ", "R"}]], " ", "-", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"E0", " ", "R0"}], "R"], " ", "t"}]}], ",", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", "B0"}], " ", "R0"}], "2"], " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["R", "R0"], "]"}]}]}], "\[IndentingNewLine]", "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.710541420844668*^9, 3.7105414241890583`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Step 4: Generate c-source file and ADD command file", "Subsection",
+ CellChangeTimes->{{3.7105414304876003`*^9, 3.7105414568259487`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"maxorder", "=", "3"}], ";", 
+  RowBox[{"gapsAPTGenAllFiles", "[", 
+   RowBox[{"Atokamak", ",", "maxorder"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.710541466025977*^9, 3.710541481178851*^9}}]
+}, Open  ]]
+},
+WindowSize->{860, 998},
+WindowMargins->{{Automatic, -10}, {Automatic, -10}},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3710766140-3222684"->{
+  Cell[1422, 48, 344, 6, 130, "Print",
+   CellTags->"Info3710766140-3222684"]},
+ "Info3710766142-3222684"->{
+  Cell[1929, 63, 559, 9, 166, "Print",
+   CellTags->"Info3710766142-3222684"]},
+ "Info3710766145-3222684"->{
+  Cell[2659, 81, 666, 10, 184, "Print",
+   CellTags->"Info3710766145-3222684"]},
+ "Info3710766147-3222684"->{
+  Cell[3492, 100, 1170, 17, 338, "Print",
+   CellTags->"Info3710766147-3222684"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3710766140-3222684", 7415, 208},
+ {"Info3710766142-3222684", 7524, 211},
+ {"Info3710766145-3222684", 7633, 214},
+ {"Info3710766147-3222684", 7743, 217}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 180, 2, 45, "Subsection"],
+Cell[763, 26, 376, 10, 55, "Input"],
+Cell[1142, 38, 129, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[1296, 44, 123, 2, 32, "Input"],
+Cell[1422, 48, 344, 6, 130, "Print",
+ CellTags->"Info3710766140-3222684"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1803, 59, 123, 2, 32, "Input"],
+Cell[1929, 63, 559, 9, 166, "Print",
+ CellTags->"Info3710766142-3222684"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2525, 77, 131, 2, 32, "Input"],
+Cell[2659, 81, 666, 10, 184, "Print",
+ CellTags->"Info3710766145-3222684"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3362, 96, 127, 2, 65, "Input"],
+Cell[3492, 100, 1170, 17, 338, "Print",
+ CellTags->"Info3710766147-3222684"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4711, 123, 165, 3, 45, "Subsection"],
+Cell[4879, 128, 607, 16, 77, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5523, 149, 141, 1, 45, "Subsection"],
+Cell[5667, 152, 1016, 30, 250, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6720, 187, 143, 1, 45, "Subsection"],
+Cell[6866, 190, 233, 5, 32, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
