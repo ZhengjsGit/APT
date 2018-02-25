@@ -52,6 +52,7 @@ int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContain
 	for(i=0;i<3;i++){
 		pXplusHalf[i+1] = pX[i] + dT_half * pP[i]; 
 	}
+//calcuate B at pX + halfT *Vn
 	(pPtc->FieldFunc)(EB,pXplusHalf,-1,pInputs);
 	
 	for(i=0;i<3;i++){
@@ -61,7 +62,9 @@ int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContain
 	for(i=0;i<3;i++){
 		B[i] = EB[i+3];
 	}
-	
+//done
+
+//init omega
 	for(i=0;i<3;i++){
 		*(*(omega+i)+i) = 0;
 	}
@@ -72,7 +75,7 @@ int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContain
 	*(*(omega+1)+2) =  B[0]*dT_half;
 	*(*(omega+2)+0) = -B[1]*dT_half;
 	*(*(omega+2)+1) = -B[0]*dT_half;
-
+//done
 	for(i=0;i<3;i++){
 		for(j=0;j<3;j++){
 		*(*(MatB+i)+j) = *(*(omega+i)+j) / dT_half;
@@ -97,9 +100,10 @@ int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContain
 	
 	
 	double tmpV3[3];//declare
-	M3multiV3(MatB, pP,tmpV3);//calc tmpV3 = tmpM3 * pP;
+	M3multiV3(MatB, pP,tmpV3);//calc tmpV3 = MatB * pP;
+	
 	for(i=0;i<3;i++){
-		L1[i] = *pCharge / *pMass * (tmpV3[i] + E[i]);
+		L1[i] = *pCharge / *pMass * ( - tmpV3[i] + E[i]);
 	}
 
 	for(i=0;i<3;i++){
@@ -108,12 +112,12 @@ int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContain
 	double tmpV3_1[3];
 	M3multiV3(MatB, tmpV3, tmpV3_1);//calc tmpV3_1 = MatB * tmpV3;
 	for(i=0;i<3;i++){
-		tmpV3[i] =  *pCharge / *pMass *( tmpV3_1[i] + E[i]);
+		tmpV3[i] =  *pCharge / *pMass *( - tmpV3_1[i] + E[i]);
 	}
 	
 	double **tmpM3; //declare
 	tmpM3 = zhengjssetp(3,3);//assign space
-	M3minusM3(tmpM3, EYE, omega);//calc tmpM3 = EYE - omega
+	M3plusM3(tmpM3, EYE, omega);//calc tmpM3 = EYE - omega
 	
 	//printf("tmpV3%f,%f,%f",tmpV3[0],tmpV3[1],tmpV3[2]);
 	//printf("\n");

@@ -111,6 +111,10 @@ int GAPS_APT_SetFieldFunction(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *p
 	{
 		pPtc->FieldFunc = GAPS_APT_Field_Hairer51;
 	}
+	else if(26 == Type)
+	{
+		pPtc->FieldFunc = GAPS_APT_Field_Hairer51_FlexBE;
+	}
 	else
 	{
 		fprintf(stderr,"ERROR: In function GAPS_APT_SetFieldFunction: Electromagnetic field type is wrong! You input Field_Type = %ld\n",(long)Type);

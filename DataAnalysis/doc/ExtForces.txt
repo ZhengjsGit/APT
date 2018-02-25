@@ -1,0 +1,37 @@
+NOTE: This file includes all information of available external non-EM force configurations.
+
+
+All the available values of ExtForce_Type are:
+0 1 2
+
+
+##########################################
+
+
+ExtForce_Type:		0
+Name:				RadLarmor
+Function Name:		GAPS_APT_ExtForce_RadLarmor
+Parameters:			ExtForce_RadLarmor_Const
+Note:				Need acceleration
+Introduction:		Radiation force model, see Phys. Plasmas 23, 062505 (2016)
+##########################################
+
+
+ExtForce_Type:		1
+Name:				GCElecCollision
+Function Name:		GAPS_APT_ExtForce_GCElecCollision
+Parameters:			ExtForce_GCElecCollision_Const,ExtForce_GCElecCollision_Ne
+Note:				Need acceleration
+Introduction:		Guiding center collision friction of electrons, see Phys. Plasmas 21, 064503 (2014) 
+##########################################
+
+
+ExtForce_Type:		2
+Name:				GCElecBremsstrahlung
+Function Name:		GAPS_APT_ExtForce_GCElecBremsstrahlung
+Parameters:			ExtForce_GCElecBremsstrahlung_Const,ExtForce_GCElecBremsstrahlung_Ne,ExtForce_GCElecBremsstrahlung_Zeff
+Note:				Need acceleration
+Introduction:		Guiding center bremsstrahlung of electrons, see Phys. Plasmas 21, 064503 (2014)
+##########################################
+
+

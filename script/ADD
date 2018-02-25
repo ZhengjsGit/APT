@@ -20,8 +20,6 @@ Add_Inputs		double		1			Unit_Charge									"Unit of charge: C"
 Add_Inputs		double		1			dT											"Step length of time: dimensionless"
 Add_Inputs		long		1			num_total_particles							"Number of particles simulated: dimensionless"
 Add_Inputs		long		1			SavePerNSteps								"Period of date outputing: dimensionless"
-#zhengjs
-Add_Inputs		long		1			SaveMode							"Period of date outputing: dimensionless"
 
 Add_Inputs		long		1			num_steps									"Number of iteration steps: dimensionless"
 Add_Inputs		long		1			num_steps_saved								"Number of steps saved: dimensionless"
@@ -30,9 +28,9 @@ Add_Inputs		long		1			Open_Cal_Work								"Open calculation of work if 'Open_Ca
 Add_Inputs		long		1			Open_Cal_Acceleration						"Open calculation of acceleration if 'Open_Cal_Acceleration' is NOT 0."
 
 #zhengjs
-Add_Inputs		double		1			PoincareInterval						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
-Add_Inputs		double		2			PoincareDelta						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
 Add_Inputs		double		1			HenonLambda						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+Add_Inputs		double		1			EMField_Hairer51_FlexBE_scaleE						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+Add_Inputs		double		1			EMField_Hairer51_FlexBE_scaleB						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
 
 #Pusher
 Add_Inputs		long		1			Pusher_Type									"Select a pusher. See Config/doc/Pusher.txt."
@@ -133,7 +131,8 @@ Add_EMField	Henon_B		"none"  "quad ?"
 Add_EMField	uncompact		"none"  "quad ?"
 
 Add_EMField	Henon_Heiles			"none"  "auto generated"
-
+Add_EMField	Hairer51		"none"	"order 3"
+Add_EMField	Hairer51_FlexBE		"none"	"order 3"
 ###########################################################################################
 ###                                 Add External Forces here!                    ###
 ###########################################################################################
@@ -161,6 +160,7 @@ Add_Pusher		Regular_Boris	"simplest Boris algorithm"			"Not Support force module
 Add_Pusher		Onehalf_Boris	"another one"			"Not Support force module"				"2-order implicit"
 Add_Pusher		CSA_SymEuler	"another one"			"Not Support force module"				"2-order implicit"
 Add_Pusher		CSA_imEuler		"another one"			"Not Support force module"				"2-order implicit"
+Add_Pusher		Stormer_Verlet	"another one"			"Not Support force module"				"2-order implicit"
 
 
 

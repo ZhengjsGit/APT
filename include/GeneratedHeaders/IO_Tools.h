@@ -15,15 +15,14 @@ typedef struct{
 	double		dT;
 	long		num_total_particles;
 	long		SavePerNSteps;
-	long		SaveMode;
 	long		num_steps;
 	long		num_steps_saved;
 	long		OpenDataSaving;
 	long		Open_Cal_Work;
 	long		Open_Cal_Acceleration;
-	double		PoincareInterval;
-	double		PoincareDelta[2];
 	double		HenonLambda;
+	double		EMField_Hairer51_FlexBE_scaleE;
+	double		EMField_Hairer51_FlexBE_scaleB;
 	long		Pusher_Type;
 	double		Pusher_RootFindingTol;
 	long		Pusher_RungeKutta_Dim;

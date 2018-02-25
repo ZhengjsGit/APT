@@ -23,15 +23,14 @@ int GAPS_IO_LoadLua2C(Gaps_IO_LuaInputEnv *pLuaenv,Gaps_IO_InputsContainer *pInp
 	GAPS_IO_Load_double(pLuaenv,"dT",&(pInputs->dT));
 	GAPS_IO_Load_long(pLuaenv,"num_total_particles",&(pInputs->num_total_particles));
 	GAPS_IO_Load_long(pLuaenv,"SavePerNSteps",&(pInputs->SavePerNSteps));
-	GAPS_IO_Load_long(pLuaenv,"SaveMode",&(pInputs->SaveMode));
 	GAPS_IO_Load_long(pLuaenv,"num_steps",&(pInputs->num_steps));
 	GAPS_IO_Load_long(pLuaenv,"num_steps_saved",&(pInputs->num_steps_saved));
 	GAPS_IO_Load_long(pLuaenv,"OpenDataSaving",&(pInputs->OpenDataSaving));
 	GAPS_IO_Load_long(pLuaenv,"Open_Cal_Work",&(pInputs->Open_Cal_Work));
 	GAPS_IO_Load_long(pLuaenv,"Open_Cal_Acceleration",&(pInputs->Open_Cal_Acceleration));
-	GAPS_IO_Load_double(pLuaenv,"PoincareInterval",&(pInputs->PoincareInterval));
-	GAPS_IO_Load_table(pLuaenv,"PoincareDelta",2,pInputs->PoincareDelta);
 	GAPS_IO_Load_double(pLuaenv,"HenonLambda",&(pInputs->HenonLambda));
+	GAPS_IO_Load_double(pLuaenv,"EMField_Hairer51_FlexBE_scaleE",&(pInputs->EMField_Hairer51_FlexBE_scaleE));
+	GAPS_IO_Load_double(pLuaenv,"EMField_Hairer51_FlexBE_scaleB",&(pInputs->EMField_Hairer51_FlexBE_scaleB));
 	GAPS_IO_Load_long(pLuaenv,"Pusher_Type",&(pInputs->Pusher_Type));
 	GAPS_IO_Load_double(pLuaenv,"Pusher_RootFindingTol",&(pInputs->Pusher_RootFindingTol));
 	GAPS_IO_Load_long(pLuaenv,"Pusher_RungeKutta_Dim",&(pInputs->Pusher_RungeKutta_Dim));
@@ -107,17 +106,14 @@ int GAPS_IO_GenCalInfoMfile(char *filename,Gaps_IO_InputsContainer *pInputs)
 	fprintf(pf,"\ty.%s = %e;\n", "dT",pInputs->dT);
 	fprintf(pf,"\ty.%s = %ld;\n", "num_total_particles",pInputs->num_total_particles);
 	fprintf(pf,"\ty.%s = %ld;\n", "SavePerNSteps",pInputs->SavePerNSteps);
-	fprintf(pf,"\ty.%s = %ld;\n", "SaveMode",pInputs->SaveMode);
 	fprintf(pf,"\ty.%s = %ld;\n", "num_steps",pInputs->num_steps);
 	fprintf(pf,"\ty.%s = %ld;\n", "num_steps_saved",pInputs->num_steps_saved);
 	fprintf(pf,"\ty.%s = %ld;\n", "OpenDataSaving",pInputs->OpenDataSaving);
 	fprintf(pf,"\ty.%s = %ld;\n", "Open_Cal_Work",pInputs->Open_Cal_Work);
 	fprintf(pf,"\ty.%s = %ld;\n", "Open_Cal_Acceleration",pInputs->Open_Cal_Acceleration);
-	fprintf(pf,"\ty.%s = %e;\n", "PoincareInterval",pInputs->PoincareInterval);
-	fprintf(pf,"\ty.%s = [","PoincareDelta");
-	for(i=0;i<2;i++){fprintf(pf,"%e ",pInputs->PoincareDelta[i]);}
-	fprintf(pf,"];\n");
 	fprintf(pf,"\ty.%s = %e;\n", "HenonLambda",pInputs->HenonLambda);
+	fprintf(pf,"\ty.%s = %e;\n", "EMField_Hairer51_FlexBE_scaleE",pInputs->EMField_Hairer51_FlexBE_scaleE);
+	fprintf(pf,"\ty.%s = %e;\n", "EMField_Hairer51_FlexBE_scaleB",pInputs->EMField_Hairer51_FlexBE_scaleB);
 	fprintf(pf,"\ty.%s = %ld;\n", "Pusher_Type",pInputs->Pusher_Type);
 	fprintf(pf,"\ty.%s = %e;\n", "Pusher_RootFindingTol",pInputs->Pusher_RootFindingTol);
 	fprintf(pf,"\ty.%s = %ld;\n", "Pusher_RungeKutta_Dim",pInputs->Pusher_RungeKutta_Dim);
@@ -213,17 +209,14 @@ int GAPS_IO_GenCalInfoPython(char *filename,Gaps_IO_InputsContainer *pInputs)
 	fprintf(pf,"\t%s = %e\n", "dT",pInputs->dT);
 	fprintf(pf,"\t%s = %ld\n", "num_total_particles",pInputs->num_total_particles);
 	fprintf(pf,"\t%s = %ld\n", "SavePerNSteps",pInputs->SavePerNSteps);
-	fprintf(pf,"\t%s = %ld\n", "SaveMode",pInputs->SaveMode);
 	fprintf(pf,"\t%s = %ld\n", "num_steps",pInputs->num_steps);
 	fprintf(pf,"\t%s = %ld\n", "num_steps_saved",pInputs->num_steps_saved);
 	fprintf(pf,"\t%s = %ld\n", "OpenDataSaving",pInputs->OpenDataSaving);
 	fprintf(pf,"\t%s = %ld\n", "Open_Cal_Work",pInputs->Open_Cal_Work);
 	fprintf(pf,"\t%s = %ld\n", "Open_Cal_Acceleration",pInputs->Open_Cal_Acceleration);
-	fprintf(pf,"\t%s = %e\n", "PoincareInterval",pInputs->PoincareInterval);
-	fprintf(pf,"\t%s = [%e","PoincareDelta",pInputs->PoincareDelta[0]);
-	for(i=1;i<2;i++){fprintf(pf,",%e ",pInputs->PoincareDelta[i]);}
-	fprintf(pf,"]\n");
 	fprintf(pf,"\t%s = %e\n", "HenonLambda",pInputs->HenonLambda);
+	fprintf(pf,"\t%s = %e\n", "EMField_Hairer51_FlexBE_scaleE",pInputs->EMField_Hairer51_FlexBE_scaleE);
+	fprintf(pf,"\t%s = %e\n", "EMField_Hairer51_FlexBE_scaleB",pInputs->EMField_Hairer51_FlexBE_scaleB);
 	fprintf(pf,"\t%s = %ld\n", "Pusher_Type",pInputs->Pusher_Type);
 	fprintf(pf,"\t%s = %e\n", "Pusher_RootFindingTol",pInputs->Pusher_RootFindingTol);
 	fprintf(pf,"\t%s = %ld\n", "Pusher_RungeKutta_Dim",pInputs->Pusher_RungeKutta_Dim);

@@ -66,7 +66,7 @@ int GAPS_APT_Pusher_Regular_Boris(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContaine
 	
 	double **tmpM3; //declare
 	tmpM3 = zhengjssetp(3,3);//assign space
-	M3plusM3(tmpM3, EYE, omega);//calc tmpM3 = EYE + omega
+	M3minusM3(tmpM3, EYE, omega);//calc tmpM3 = EYE + omega
 	
 	double tmpV3[3];//declare
 	M3multiV3(tmpM3, pP,tmpV3);//calc tmpV3 = tmpM3 * pP;
@@ -105,7 +105,7 @@ int GAPS_APT_Pusher_Regular_Boris(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContaine
 	
 	
 	
-	M3minusM3(tmpM3, EYE, omega);
+	M3plusM3(tmpM3, EYE, omega);
 	double **tmp2M3;
 	tmp2M3 = zhengjssetp(3,3);
 	Invert_LU( tmp2M3, tmpM3,3);

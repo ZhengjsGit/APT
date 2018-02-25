@@ -316,8 +316,9 @@ inline int GAPS_APT_SaveData(Gaps_APT_OutputFiles *pOutFiles,Gaps_APT_ParticleGr
 {
 	if(pInputs->OpenDataSaving==1)
 	{
-		if(pInputs->SaveMode == 1)
-		{
+/*
+//		if(pInputs->SaveMode == 1)
+//		{
 			Gaps_APT_Particle *pPtc = pPtcgrp -> ptcgrp;
 			double *pX=GAPS_APT_GetX3(pPtc);
 			double *pP=GAPS_APT_GetP3(pPtc);
@@ -340,7 +341,7 @@ inline int GAPS_APT_SaveData(Gaps_APT_OutputFiles *pOutFiles,Gaps_APT_ParticleGr
 				GAPS_APT_OutPutParticle(pOutFiles,pPtcgrp,pInputs);
 			}
 		}
-		else if(pInputs->SaveMode == 0)
+*/
 		{
 			if(Step%(pInputs->SavePerNSteps)==0)
 			{
