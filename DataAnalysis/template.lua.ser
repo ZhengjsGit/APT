@@ -1,7 +1,7 @@
 -- Configuration File: Charged particles in uniform electromagnetic fields
 -- Physical Parameters
 B0 = 1; -- Magnetic strength (T)
-E0 = 0; -- Electric strength (V/m)
+E0 = 1; -- Electric strength (V/m)
 R0 = 1.7; -- Major radius of torus (m)
 a  = 0.4; -- Minor radius of torus (m)
 GAPS_APT_LuaConfig_LoadUnits(B0); -- Load all units based on B0 
@@ -23,7 +23,7 @@ Init_Num_Particles = 1; -- Number of initial particles
 Init_X_Type = "Constant"; -- Initial position distribution is "Torus"
 Init_P_Type = "Constant"; -- Initial momentum distribution is "Constant"
 Init_Aclr_Type = "Constant"; -- Initial momentum distribution is "Constant"
-Init_Aclr_Constant_Aclr0 = {0, 0, 0.}; -- Value of constant momentum
+Init_Aclr_Constant_Aclr0 = {0, 0, 0}; -- Value of constant momentum
 
 Init_Ptc_Type="Constant";
 Init_Ptc_Constant_ChargeMass={1,1};
@@ -39,20 +39,40 @@ Mass=Init_Ptc_Constant_ChargeMass[2];
 
 RunCheckPoint=0; --Continue calculation from break point
 
+
 --EXP2
 --chaotic initial point
---x1 = 0.01;
---x2 = 0.82000000;
---v1 = 0.123201731589563;
+--x1 = 0;
+--x2 = -0.015;
+--v1 = 0.499773;
 --v2 = 0;
+--
+--x3=0;
+--v3=0;
+x1 = 0;
+x2 = 0.82000000;
+v1 = 0.123201731589563;
+v2 = 0
+x3=0.1;
+v3=0.3;
 
 --EXP1
 --regular initial point
---x1 = 0.01;
---x2 = 0;
+--x1 = 0;
+--x2 = 0.50003040;
 --v1 = 0.424365821721973;
---v2 = 0.141115730357159;
+--v1=0.391558595019126;
+--v2 = 0;
+--x3=0;
+--v3=0;
 
+--------------------very low energy 0.001
+--x1=0.0001;
+--x2=0.0001;
+--v1=0.035790703182938;
+--v2=0.445779121949055;
+--x3=0;
+--v3=0;
 --chaotic 2
 --x1 = 0;
 --x2 = 0;
@@ -61,33 +81,35 @@ RunCheckPoint=0; --Continue calculation from break point
 
 
 --hairer paper
-x1 = 0.0;
-x2 = 1.0;
-x3 = 0.1;
-v1 = 0.09;
-v2 = 0.55;
-v3 = 0.30;
+--x1 = 0.01;
+--x2 = 1.0;
+--x3 = 0.1;
+--v1 = 0.09;
+--v2 = 0.55;
+--v3 = 0.3;
 
 -- simple init point
 
 
 --x1 = 0.001;
---x2 = 0;
---v1 = 0.20301;
-
-
+--x2 = 1;
 --x3=0;
+--v1 = 0.1;
+--v2= 0;
 --v3=0
 
+dx = {0,0};
+dv = {0,0}
+--W2 = -1e-8
 HenonLambda = 1;
-Init_X_Constant_X0 = {x1,x2,x3}; 
-Init_P_Constant_P0 = {v1,v2,v3};
+Init_X_Constant_X0 = {x1+dx[1],x2+dx[2],x3}; 
+Init_P_Constant_P0 = {v1+dv[1],v2+dv[2],v3};
 EMField_scaleE=1;
 EMField_scaleB=1;
 
 --add by python
-Pusher_Type="12";
-EMField_Type="10";
+Pusher_Type="8";
+EMField_Type="12";
 dT=0.001;
-num_steps=3e7;
-SavePerNSteps=100;
+num_steps=3e5;
+SavePerNSteps=1;

@@ -1,0 +1,369 @@
+#include "APT_AllHeaders.h"
+//void RFfunc_CanonSymp3D(double *X_iter,double *X_last,double *A,double (*DelA)[3],double *DelPHI, double *F,double dT);
+//void RFJacobi_CanonSymp3D(double *X_iter,double *X_last,double *A,double (*DelA)[3],double *DelPHI, double **J,double dT);
+int GAPS_APT_CSimEulerRootFindCoeffience(double *pK1, double *K2, double * L1, double * pL2, double *xP, double *pDt,double *pTolerance,double *pCharge,double *pMass, Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs);
+int GAPS_APT_CSimEulerRootFindFlow_K1(double *F, double *K1, double *xP, double *DelPHI, double *A , double (*DelA)[3], double *pDt,double *pCharge,double *pMass);
+int GAPS_APT_CSimEulerRootFindJacobi_K1(double **J, double *xP, double (*DelA)[3], double *pDt,double *pCharge,double *pMass);
+int GAPS_APT_CSimEulerRootFindFlow_L2(double *F, double *K1, double * L2, double *xP, double *A, double *pDt,double *pCharge,double *pMass);
+int GAPS_APT_CSimEulerRootFindJacobi_L2(double **J, double *xP, double (*DelA)[3], double *pDt,double *pCharge,double *pMass);
+
+void Trans4to3_zjs(double (*DDelA)[3][3], double (*DelA)[3], double * DelPHI, double * A,   double * DDelA4, double * DelA4,double * pA4);
+
+int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)
+{	
+	double Tolerance=pInputs->Pusher_RootFindingTol;
+	double dT=pInputs->dT;
+	double *pX4 = GAPS_APT_GetX4(pPtc);
+	double *pP4 = GAPS_APT_GetP4(pPtc);
+	double *pA4 = GAPS_APT_GetA4(pPtc);//find out this step
+	//double *pGamma=GAPS_APT_GetGamma1(pPtc);//get gamma
+
+	double *pMass = GAPS_APT_GetMass1(pPtc);
+	double *pCharge= GAPS_APT_GetCharge1(pPtc);
+	double CanP4[4];
+	//we have to compmise
+	double *pK1= GAPS_APT_GetCanP3(pPtc);
+	double *pL2= GAPS_APT_GetAclr3(pPtc);
+	//	double DelA4[16];
+	//Key point, write expression of function A4 and Del A4
+	//Field function just what we set in bash script. maybe this one has parameters
+	//see? using order
+
+	(pPtc->FieldFunc)(pA4,pX4,1,pInputs);
+	//	(pPtc->FieldFunc)(DelA4,pX4,2,pInputs);
+	{int i;for(i=0;i<4;i++){CanP4[i]=pP4[i]+pCharge[0]*pA4[i];}}
+
+	//	double DDelA3[3][3][3];
+	//	double DelA3[3][3];
+	//  double A3[3],DelPHI[3];
+	double CanxP6[6]={pX4[1],pX4[2],pX4[3],CanP4[1],CanP4[2],CanP4[3]};
+
+	double K2[3];
+	double L1[3];
+	GAPS_APT_CSimEulerRootFindCoeffience(pK1, K2, L1, pL2, CanxP6, & dT, &Tolerance, pCharge, pMass, pPtc, pInputs);
+
+	//{int i;for(i=0;i<3;i++){printf("K1_%d=%.2f\n",i,K1[i]);}}
+	pP4[0]=1;
+	pX4[0]+=dT;
+	int i;
+	for(i=0;i<3;i++)
+	{
+		int i,j;
+		pX4[i+1]=CanxP6[i] + dT / 2.0 * (L1[i] + L2[i]) ;
+		pP4[i+1]=CanxP6[3+i] + dT / 2.0 * (K1[i] + K2[i]);
+	}
+	//new X
+	(pPtc->FieldFunc)(pA4,pX4,1,pInputs);
+	pP4[1]=pP4[1]-pCharge[0]*pA4[1];
+	pP4[2]=pP4[2]-pCharge[0]*pA4[2];
+	pP4[3]=pP4[3]-pCharge[0]*pA4[3];
+	//	EraseMatrixSpace(J);
+	return 0;
+}
+//Newton iteration main progress
+//LocalA DelPHI DelA DDelA should be calculated at half way of X
+//missing DDelA
+//xp is input arg, initial x and P and we keep iterating on it until it gets out
+int GAPS_APT_CSimEulerRootFindCoeffience(double *pK1, double *K2, double * L1, double *pL2, double *xP, double *pDt,double *pTolerance,double *pCharge,double *pMass, Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)
+{
+
+	//Global vars
+	double DDelA4[64];
+	double DelA4[16];
+	double pA4[4];
+	double pXtmp[4];
+
+	double DDelA[3][3][3];
+	double DelA[3][3];
+	double A[3],DelPHI[3];
+	double Charge=(*pCharge);
+	double Mass=(*pMass);
+	double ChargeMass=Charge/Mass;
+	double dT=(*pDt);
+
+	int i,j,k;
+	double K1[3] = {pK1[0],pK1[1],pK1[2]};
+	double L2[3] = {pL2[0],pL2[1],pL2[2]};
+	//Part 1 K1
+	{
+		//iteration container for x and P
+		double F[3];
+		double Jacobi_1D[9];
+		double **Jacobi=(double **)malloc(sizeof(double *)*3);
+		Jacobi[0]=&Jacobi_1D[0];
+		Jacobi[1]=&Jacobi_1D[3];
+		Jacobi[2]=&Jacobi_1D[6];
+		//alloc memory DONE
+
+		double tol,tolF;
+		long times_iter=0;
+
+		do
+		{
+			int i,j;
+			double delta_K1[3];
+
+			//prepare Field components, declare and alloc memory
+			pXtmp[0] = 0;
+			for(i=0;i<3;i++){
+				pXtmp[i+1] = xP[i];
+			}
+
+			(pPtc->FieldFunc)(DelA4, pXtmp, 2, pInputs);
+			(pPtc->FieldFunc)(pA4,pXtmp,1,pInputs);
+
+			//{int i;for(i=0;i<16;i++){printf("DelA_%d=%.2f\n",i,DelA4[i]);}}
+			for(i=0;i<3;i++)
+			{
+				A[i]=pA4[i+1];
+				int idx1[2]={0,i+1};
+				DelPHI[i]=GAPS_APT_TensorValue(DelA4,idx1,4,2);
+				for(j=0;j<3;j++)
+				{
+					int idx2[2]={i+1,j+1};
+					DelA[i][j]=GAPS_APT_TensorValue(DelA4,idx2,4,2);
+				}
+			}
+				//FLOW and JACOBI wants A DelA DelPHI and DDelA at half point of X, so PushxP should satisfied this
+			GAPS_APT_CSimEulerRootFindFlow_K1(F, K1, xP, DelPHI, A, DelA, pDt, pCharge, pMass);
+
+			tolF=sqrt(F[0]*F[0]+F[1]*F[1]+F[2]*F[2]);
+			//MISSING DDelA
+			GAPS_APT_CSimEulerRootFindJacobi_K1(Jacobi, xP, DelA, pDt, pCharge, pMass);
+			if(500 < times_iter){
+				for(i=0;i<3;i++){
+					for(j=0;j<3;j++){
+						printf("%.2f, ",Jacobi[i][j]);
+					}
+					printf("\n");
+				}
+				printf("iteration K1 too many, abort");
+				exit(1);
+			}
+			//printf("----------------------------------------------\n");
+			double neg_F[3]={-1*F[0],-1*F[1],-1*F[2]};
+			LinearSolver_LU(delta_K1,Jacobi,neg_F,3);
+			tol=0;
+			for(i=0;i<3;i++)
+			{
+				K1[i]+=delta_K1[i];
+				tol+=pow(delta_K1[i],2);
+			}
+			tol=sqrt(tol);	
+			times_iter++;
+			//printf("%d\n",times_iter);
+		}while(tol>=(*pTolerance) && tolF>=(*pTolerance));
+		free(Jacobi);
+		for(i=0;i<3;i++){pK1[i] = K1[i];}
+	}
+	//Part 2 L1
+	{
+		pXtmp[0] = 0;
+		for(i=0;i<3;i++){
+			pXtmp[i+1] = xP[i];
+		}
+		(pPtc->FieldFunc)(pA4,pXtmp,1,pInputs);
+		for(i=0;i<3;i++){
+			A[i] = pA4[i+1];
+			L1[i] = 1.0 / Mass *(xP[i+3] + dT/2.0 * K1[i] - Charge * A[i]);
+		}
+
+	}
+	//Part 3 L2
+	{
+		//iteration container for x and P
+		double F[3];
+		double Jacobi_1D[9];
+		double **Jacobi=(double **)malloc(sizeof(double *)*3);
+		Jacobi[0]=&Jacobi_1D[0];
+		Jacobi[1]=&Jacobi_1D[3];
+		Jacobi[2]=&Jacobi_1D[6];
+		//alloc memory DONE
+
+		double tol,tolF;
+		long times_iter=0;
+
+		do
+		{
+			int i,j;
+			double delta_L2[3];
+
+			//prepare Field components, declare and alloc memory
+			pXtmp[0] = 0;
+			for(i=0;i<3;i++){
+				pXtmp[i+1] = xP[i] + dT /2.0 * (L1[i] + L2[i]);
+			}
+
+			//(pPtc->FieldFunc)(DDelA4, pXtmp, 3, pInputs);
+			(pPtc->FieldFunc)(DelA4, pXtmp, 2, pInputs);
+			(pPtc->FieldFunc)(pA4,pXtmp,1,pInputs);
+			
+			//{int i;for(i=0;i<16;i++){printf("DelA_%d=%.2f\n",i,DelA4[i]);}}
+			//Trans4to3_zjs(DDelA, DelA, DelPHI, A, DDelA4, DelA4, pA4);
+			for(i=0;i<3;i++)
+			{
+				A[i]=pA4[i+1];
+				for(j=0;j<3;j++)
+				{
+					int idx2[2]={i+1,j+1};
+					DelA[i][j]=GAPS_APT_TensorValue(DelA4,idx2,4,2);
+				}
+			}
+			//FLOW and JACOBI wants A DelA DelPHI and DDelA at half point of X, so PushxP should satisfied this
+			GAPS_APT_CSimEulerRootFindFlow_L2(F, K1, L2, xP, A, pDt, pCharge, pMass);
+		
+			tolF=sqrt(F[0]*F[0]+F[1]*F[1]+F[2]*F[2]);
+			//MISSING DDelA
+			GAPS_APT_CSimEulerRootFindJacobi_L2(Jacobi, xP, DelA, pDt, pCharge, pMass);
+			if(500 < times_iter){
+				for(i=0;i<3;i++){
+					for(j=0;j<3;j++){
+						printf("%.2f, ",Jacobi[i][j]);
+					}
+					printf("\n");
+				}
+				printf("iteration L2 too many, abort");
+				exit(1);
+			}
+			//printf("----------------------------------------------\n");
+			double neg_F[3]={-1*F[0],-1*F[1],-1*F[2]};
+			LinearSolver_LU(delta_L2,Jacobi,neg_F,3);
+			tol=0;
+			for(i=0;i<3;i++)
+			{
+				L2[i]+=delta_L2[i];
+				tol+=pow(delta_L2[i],2);
+			}
+			tol=sqrt(tol);	
+			times_iter++;
+			//printf("%d\n",times_iter);
+		}while(tol>=(*pTolerance) && tolF>=(*pTolerance));
+		free(Jacobi);
+		for(i=0;i<3;i++){pL2[i] = L2[i];}
+	}
+	//Part 4 K2
+	{
+		pXtmp[0] = 0;
+		for(i=0;i<3;i++){
+			pXtmp[i+1] = xP[i] + (L1[i] +L2[i])* dT / 2.0 ;
+		}
+		(pPtc->FieldFunc)(DelA4, pXtmp, 2, pInputs);
+		(pPtc->FieldFunc)(pA4,pXtmp,1,pInputs);
+		for(i=0;i<3;i++)
+		{
+			A[i]=pA4[i+1];
+			int idx1[2]={0,i+1};
+			DelPHI[i]=GAPS_APT_TensorValue(DelA4,idx1,4,2);
+			for(j=0;j<3;j++)
+			{
+				int idx2[2]={i+1,j+1};
+				DelA[i][j]=GAPS_APT_TensorValue(DelA4,idx2,4,2);
+			}
+		}
+
+			for(i=0;i<3;i++)
+			{
+				double sumP=0;
+				for(j=0;j<3;j++)
+				{	
+					sumP+= (xP[j] + dT / 2.0 * K1[i] - Charge * A[j]) * DelA[j][i];
+				}
+				K2[i] = (1.0 / Mass * sumP - Charge * DelPHI[i]);			
+			}
+		}
+	return 0;
+}
+
+//What is Flow? Flow is [deltaP - dT * (partial H over partial q)]
+//we have to calculate A delA delPhi inside iteration
+//actually we using DelA DelPhi in our parameter p_N+1 + p_N divide 2
+int GAPS_APT_CSimEulerRootFindFlow_K1(double *F, double *K1, double *xP, double *DelPHI, double *A , double (*DelA)[3], double *pDt,double *pCharge,double *pMass)
+{
+	double Charge=(*pCharge);
+	double Mass=(*pMass);
+	double ChargeMass=Charge/Mass;
+	double dT=(*pDt);
+	int i;
+	for(i=0;i<3;i++)
+	{
+		int j;
+		double sumP=0;
+		for(j=0;j<3;j++)
+		{	
+			sumP+= (xP[j+3] + K1[j] * dT/2.0 - Charge * A[j]) * DelA[j][i];
+		}
+		F[i] = K1[i] - 1.0 / Mass * sumP + Charge * DelPHI[i];			
+	}
+	return 0;
+}
+
+int GAPS_APT_CSimEulerRootFindJacobi_K1(double **J, double *xP,  double (*DelA)[3], double *pDt,double *pCharge,double *pMass)
+{
+	double Charge=(*pCharge);
+	double Mass=(*pMass);
+	double ChargeMass=Charge/Mass;
+	double dT=(*pDt);
+
+	int i,j,k;
+	for(i=0;i<3;i++){
+		for(j=0;j<3;j++){
+			J[i][j] = Delta(i,j) - 1.0/Mass*(dT / 2.0 * DelA[j][i] );
+		}
+	}
+
+	return 0;
+}
+//A at qn + l1 L2 
+int GAPS_APT_CSimEulerRootFindJacobi_L2(double **J, double *xP, double (*DelA)[3], double *pDt,double *pCharge,double *pMass)
+{
+	double Charge=(*pCharge);
+	double Mass=(*pMass);
+	double ChargeMass=Charge/Mass;
+	double dT=(*pDt);
+
+	int i,j,k;
+	for(i=0;i<3;i++){
+		for(j=0;j<3;j++){
+			J[i][j] = Delta(i,j) + 1.0/Mass*(dT / 2.0 * Charge * DelA[i][j] );
+		}
+	}
+
+	return 0;
+}
+int GAPS_APT_CSimEulerRootFindFlow_L2(double *F, double *K1, double *L2, double *xP, double *A, double *pDt,double *pCharge,double *pMass)
+{
+	double Charge=(*pCharge);
+	double Mass=(*pMass);
+	double ChargeMass=Charge/Mass;
+	double dT=(*pDt);
+	int i;
+	for(i=0;i<3;i++)
+	{
+		F[i] =L2[i] - 1.0 / Mass * (xP[i+3] + K1[i] * dT/2.0 - Charge * A[i]);
+	}
+	return 0;
+}
+
+//IN DDelA4 DelA4 A4
+//OUT PHI A3 DelA3[][] DDelA
+//all pTensor(dim 4) is one dimensional
+void Trans4to3_zjs(double (*DDelA3)[3][3], double (*DelA3)[3], double * DelPHI,double * A3, double * DDelA4, double * DelA4,double * pA4){
+	//A3 and PHI are come from A4
+	int i,j,k;
+	for(i=0;i<3;i++)
+	{
+		A3[i]=pA4[i+1];
+		int idx1[2]={0,i+1};
+		DelPHI[i]=GAPS_APT_TensorValue(DelA4,idx1,4,2);
+		for(j=0;j<3;j++)
+		{
+			int idx2[2]={i+1,j+1};
+			DelA3[i][j]=GAPS_APT_TensorValue(DelA4,idx2,4,2);
+
+			for(k=0;k<3;k++){
+				int idx3[3]={i+1,j+1,k+1};
+				DDelA3[i][j][k]=GAPS_APT_TensorValue(DDelA4,idx3,4,2);
+			}
+		}
+	}
+}

@@ -75,7 +75,10 @@ int main(int argc,char *argv[])
 	//Set Particle pusher
 	Gaps_APT_ParticlePusher PusherUsing;
 	GAPS_APT_SetParticlePusher(&PusherUsing,&Inputs);
-	
+	if(0 == proc_rank){
+		printf("PushType is %d\n",Inputs.Pusher_Type);
+		printf("EMFieldType is %d\n",Inputs.EMField_Type);
+	}
 	//Initialize Particle structure: assign RAM, set fields and forces
 	Gaps_APT_Particle *CurrentPtc;
 	Global_pCurrentPtc =&CurrentPtc;

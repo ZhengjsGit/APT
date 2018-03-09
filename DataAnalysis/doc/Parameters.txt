@@ -143,14 +143,14 @@ Information:	Set Cartesian coordinates for constant sampling: {x,y,z}.
 #########################################################
 
 
-Name:	EMField_Hairer51_FlexBE_scaleE
+Name:	EMField_scaleE
 Type:	double	
 Length: 1
 Information:	Set Cartesian coordinates for constant sampling: {x,y,z}.
 #########################################################
 
 
-Name:	EMField_Hairer51_FlexBE_scaleB
+Name:	EMField_scaleB
 Type:	double	
 Length: 1
 Information:	Set Cartesian coordinates for constant sampling: {x,y,z}.

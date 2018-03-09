@@ -21,8 +21,8 @@ typedef struct{
 	long		Open_Cal_Work;
 	long		Open_Cal_Acceleration;
 	double		HenonLambda;
-	double		EMField_Hairer51_FlexBE_scaleE;
-	double		EMField_Hairer51_FlexBE_scaleB;
+	double		EMField_scaleE;
+	double		EMField_scaleB;
 	long		Pusher_Type;
 	double		Pusher_RootFindingTol;
 	long		Pusher_RungeKutta_Dim;

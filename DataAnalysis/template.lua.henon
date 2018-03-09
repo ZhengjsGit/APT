@@ -71,10 +71,10 @@ EMField_scaleB=1;
 
 
 --add by python
-num_total_particles="160";
+num_total_particles="100";
 Init_Num_Particles=num_total_particles
-Pusher_Type="11";
+Pusher_Type="8";
 EMField_Type="9";
-dT=0.01;
+dT=0.001;
 num_steps=3e7;
-SavePerNSteps=100;
+SavePerNSteps=1000;

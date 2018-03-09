@@ -72,8 +72,8 @@ Add_Inputs		long		1			Open_Cal_Acceleration						"Open calculation of accelerati
 
 #zhengjs
 Add_Inputs		double		1			HenonLambda						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
-Add_Inputs		double		1			EMField_Hairer51_FlexBE_scaleE						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
-Add_Inputs		double		1			EMField_Hairer51_FlexBE_scaleB						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+Add_Inputs		double		1			EMField_scaleE						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
+Add_Inputs		double		1			EMField_scaleB						 	"Set Cartesian coordinates for constant sampling: {x,y,z}."
 
 #Pusher
 Add_Inputs		long		1			Pusher_Type									"Select a pusher. See Config/doc/Pusher.txt."
@@ -156,26 +156,14 @@ Add_EMField    MagMirrorChain    "EMField_MagMirrorChain_Rm;EMField_MagMirrorCha
 
 #zhengjs
 Add_EMField	EMbenchmark		"none"	"order 1"
-Add_EMField	hairer5_1		"none"	"order 1"
-Add_EMField	hairerquad		"none"  "quad"
-Add_EMField	hairerrandom		"none"  "quad"
-Add_EMField	EM_non_case1		"none"	"???"
-Add_EMField	EM_int_case1		"none"  "???"
-Add_EMField	EM_N_ed_case1		"none"  "energy drift, U is r^-2 - r^2 + r3 B is (3xy+3x)/r "
-Add_EMField	EM_N_ox_case1		"none"  "orbit X, U is type1 and B is (5cos(2phi) - 1 )/r^2"
-Add_EMField	EM_N_rg_case1		"none"  "goog one, U is 4/3 r^3 - 3r^4) B is xx/2/r"
-Add_EMField	EMhairerEquadBnc3	"none"  "???"
-Add_EMField	EM_I_type1_case1	"none"  "U is ?"
-Add_EMField	EM_I_type1_case2	"none"  "quad ?"
-Add_EMField	Ksymng			"none"  "quad ?"
-Add_EMField	Henon			"none"  "quad ?"
-Add_EMField	Henon_ConstantB		"none"  "quad ?"
-Add_EMField	Henon_B		"none"  "quad ?"
-Add_EMField	uncompact		"none"  "quad ?"
-
-Add_EMField	Henon_Heiles			"none"  "auto generated"
-Add_EMField	Hairer51		"none"	"order 3"
+Add_EMField	Henon_Heiles_FlexEB			"none"  "auto generated"
+Add_EMField	Henon_Heiles_FlexEB_quarterB			"none"  "auto generated"
+Add_EMField	Henon_Heiles_AsymB			"none"  "auto generated"
+Add_EMField	Henon_Heiles_AsymmB			"none"  "auto generated"
+Add_EMField	Henon_Heiles_AsymmB_3D			"none"  "auto generated"
 Add_EMField	Hairer51_FlexBE		"none"	"order 3"
+Add_EMField Zjs_E_drift		"none"	"order 3"
+Add_EMField HairerRandomWalk_flexEB "nothing here"
 ###########################################################################################
 ###                                 Add External Forces here!                    ###
 ###########################################################################################

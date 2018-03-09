@@ -1,0 +1,68 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+GAPS_APT_CSEulerRootFindFlow	src/Pusher/RCSA_SymEuler.c	/^int GAPS_APT_CSEulerRootFindFlow(double *F,double *P_iter,double *P_last,double *A,double (*DelA)[3],double *DelPHI,double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSEulerRootFindFlow_nonRe	src/Pusher/CSA_symEuler.c	/^int GAPS_APT_CSEulerRootFindFlow_nonRe(double *F,double *P_iter,double *P_last,double *A,double (*DelA)[3],double *DelPHI,double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSEulerRootFindJacobi	src/Pusher/RCSA_SymEuler.c	/^int GAPS_APT_CSEulerRootFindJacobi(double **J,double *P_iter,double *P_last,double *A,double (*DelA)[3],double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSEulerRootFindJacobi_nonRe	src/Pusher/CSA_symEuler.c	/^int GAPS_APT_CSEulerRootFindJacobi_nonRe(double **J,double *P_iter,double *P_last,double *A,double (*DelA)[3],double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSEulerRootFindPushP	src/Pusher/RCSA_SymEuler.c	/^int GAPS_APT_CSEulerRootFindPushP(double *P,double *LocalA,double *DelPHI,double (*LocalDelA)[3],double *pDt,double *pTolerance,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSEulerRootFindPushP_nonRe	src/Pusher/CSA_symEuler.c	/^int GAPS_APT_CSEulerRootFindPushP_nonRe(double *P,double *LocalA,double *DelPHI,double (*LocalDelA)[3],double *pDt,double *pTolerance,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSimEulerRootFindFlow_nonRe	src/Pusher/CSA_imEuler.c	/^int GAPS_APT_CSimEulerRootFindFlow_nonRe(double *F,double *xP_iter,double *xP_last,double * DelPHI_mid, double * A_mid,double (*DelA_mid)[3], double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSimEulerRootFindJacobi_nonRe	src/Pusher/CSA_imEuler.c	/^int GAPS_APT_CSimEulerRootFindJacobi_nonRe(double **J,double *P_iter,double *P_last, double *A_mid, double (*DelA_mid)[3] ,double (*DDelA_mid)[3][3], double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_CSimEulerRootFindPushxP_nonRe	src/Pusher/CSA_imEuler.c	/^int GAPS_APT_CSimEulerRootFindPushxP_nonRe(double * xP,double *pDt,double *pTolerance,double *pCharge,double *pMass,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_LorentzFlow	src/Pusher/RungeKutta.c	/^int GAPS_APT_LorentzFlow(double *pFlow,Gaps_APT_Particle *pPtc,long Dim, Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_CSA_SymEuler	src/Pusher/CSA_symEuler.c	/^int GAPS_APT_Pusher_CSA_SymEuler(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_CSA_imEuler	src/Pusher/CSA_imEuler.c	/^int GAPS_APT_Pusher_CSA_imEuler(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_LCCSA_IMP	src/Pusher/LCCSA_IMP.c	/^int GAPS_APT_Pusher_LCCSA_IMP(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_LCCSA_IMP_RFJacobi	src/Pusher/LCCSA_IMP.c	/^int GAPS_APT_Pusher_LCCSA_IMP_RFJacobi(double **J,double *X_iter,double *X_last,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_LCCSA_IMP_RFflow	src/Pusher/LCCSA_IMP.c	/^int GAPS_APT_Pusher_LCCSA_IMP_RFflow(double *F,double *X_iter,double *X_last,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_LCCSA_IMP_RootFindPush	src/Pusher/LCCSA_IMP.c	/^int GAPS_APT_Pusher_LCCSA_IMP_RootFindPush(double *XP,double dT,double Tolerance,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_LCCSA_SymEuler	src/Pusher/LCCSA_SymEuler.c	/^int GAPS_APT_Pusher_LCCSA_SymEuler(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_Onehalf_Boris	src/Pusher/Onehalf_Boris.c	/^int GAPS_APT_Pusher_Onehalf_Boris(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RCSA_SymEuler	src/Pusher/RCSA_SymEuler.c	/^int GAPS_APT_Pusher_RCSA_SymEuler(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Map_1	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Map_1(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Map_2	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Map_2(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Map_3	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Map_3(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Map_4	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Map_4(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Map_5	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Map_5(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Map_6	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Map_6(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Map_7	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Map_7(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Order1	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Order1(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Order2	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Order2(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RECSA_GF4D_Order3	src/Pusher/RECSA_GF4D.c	/^int GAPS_APT_Pusher_RECSA_GF4D_Order3(double *pX4,double *CanP4,double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RNCSA_4D	src/Pusher/RNCSA_4D.c	/^int GAPS_APT_Pusher_RNCSA_4D(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RNCSA_4D_MapT	src/Pusher/RNCSA_4D.c	/^int GAPS_APT_Pusher_RNCSA_4D_MapT(double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RNCSA_4D_MapX	src/Pusher/RNCSA_4D.c	/^int GAPS_APT_Pusher_RNCSA_4D_MapX(double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RNCSA_4D_MapY	src/Pusher/RNCSA_4D.c	/^int GAPS_APT_Pusher_RNCSA_4D_MapY(double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RNCSA_4D_MapZ	src/Pusher/RNCSA_4D.c	/^int GAPS_APT_Pusher_RNCSA_4D_MapZ(double dT,Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RVPA_Cay3D	src/Pusher/RVPA_Cay3D.c	/^int GAPS_APT_Pusher_RVPA_Cay3D (Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RVPA_Exp3D	src/Pusher/RVPA_Exp3D.c	/^int GAPS_APT_Pusher_RVPA_Exp3D (Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_Regular_Boris	src/Pusher/Regular_Boris.c	/^int GAPS_APT_Pusher_Regular_Boris(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_RungeKutta	src/Pusher/RungeKutta.c	/^int GAPS_APT_Pusher_RungeKutta(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_Pusher_Stormer_Verlet	src/Pusher/Stormer_Verlet.c	/^int GAPS_APT_Pusher_Stormer_Verlet(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_SVRootFindCoeffience	src/Pusher/Stormer_Verlet.c	/^int GAPS_APT_SVRootFindCoeffience(double *pK1, double *K2, double * L1, double *pL2, double *xP, double *pDt,double *pTolerance,double *pCharge,double *pMass, Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *pInputs)$/;"	f
+GAPS_APT_SVRootFindFlow_K1	src/Pusher/Stormer_Verlet.c	/^int GAPS_APT_SVRootFindFlow_K1(double *F, double *K1, double *xP, double *A,  double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_SVRootFindFlow_L2	src/Pusher/Stormer_Verlet.c	/^int GAPS_APT_SVRootFindFlow_L2(double *F, double *L1, double *L2, double *xP, double *DelPHI, double *A, double (*DelA)[3], double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_SVRootFindJacobi_K1	src/Pusher/Stormer_Verlet.c	/^int GAPS_APT_SVRootFindJacobi_K1(double **J, double *xP,  double (*DelA)[3], double *pDt,double *pCharge,double *pMass)$/;"	f
+GAPS_APT_SVRootFindJacobi_L2	src/Pusher/Stormer_Verlet.c	/^int GAPS_APT_SVRootFindJacobi_L2(double **J, double *xP, double (*DelA)[3], double *pDt,double *pCharge,double *pMass)$/;"	f
+M3minusM3	src/Pusher/Onehalf_Boris.c	/^inline int M3minusM3(double **A, double **B, double **C){$/;"	f
+M3minusM3	src/Pusher/Regular_Boris.c	/^static inline int M3minusM3(double **C, double **A, double **B){$/;"	f	file:
+M3multiM3	src/Pusher/Onehalf_Boris.c	/^inline int M3multiM3 (double **M1, double **M2, double **M3){$/;"	f
+M3multiV3	src/Pusher/Onehalf_Boris.c	/^inline int M3multiV3 (double **M, double *A, double *B){$/;"	f
+M3multiV3	src/Pusher/Regular_Boris.c	/^static inline int M3multiV3 (double **M, double *A, double *B){$/;"	f	file:
+M3plusM3	src/Pusher/Onehalf_Boris.c	/^inline int M3plusM3( double **A, double **B, double **C){$/;"	f
+M3plusM3	src/Pusher/Regular_Boris.c	/^static inline int M3plusM3(double **C, double **A, double **B){$/;"	f	file:
+OBJ	src/Pusher/Makefile	/^OBJ = $(patsubst %.c,%.o,$(wildcard *.c))$/;"	m
+PushP_CCS	src/Pusher/LCCSA_SymEuler.c	/^inline int PushP_CCS(double *P,double *A,double *DelA_array,double *PP,double dT,double q,double m)$/;"	f
+Trans4to3	src/Pusher/CSA_imEuler.c	/^void Trans4to3(double (*DDelA3)[3][3], double (*DelA3)[3], double * DelPHI,double * A3, double * DDelA4, double * DelA4,double * pA4){$/;"	f
+p_minus2p_plus	src/Pusher/RVPA_Cay3D.c	/^inline int p_minus2p_plus(double dT,double *pB, double Lgamma,double *pP,double qOverM)$/;"	f
+p_minus2p_plus_exp	src/Pusher/RVPA_Exp3D.c	/^inline int p_minus2p_plus_exp(double dT,double *B,double gamma, double *Pp,double qOverM)$/;"	f
+tmpMatrixMult	src/Pusher/LCCSA_IMP.c	/^inline void tmpMatrixMult(double (*M1)[4],double (*M2)[4],double (*M)[4])$/;"	f
+zhengjsfreep	src/Pusher/Onehalf_Boris.c	/^static inline void zhengjsfreep(double **A,int d){$/;"	f	file:
+zhengjsfreep	src/Pusher/Regular_Boris.c	/^static inline void zhengjsfreep(double **A,int d){$/;"	f	file:
+zhengjssetp	src/Pusher/Onehalf_Boris.c	/^inline double ** zhengjssetp(int M, int N){$/;"	f
+zhengjssetp	src/Pusher/Regular_Boris.c	/^static inline double ** zhengjssetp(int M, int N){$/;"	f	file:

@@ -41,79 +41,35 @@ int GAPS_APT_SetFieldFunction(Gaps_APT_Particle *pPtc,Gaps_IO_InputsContainer *p
 	}
 	else if(8 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_hairer5_1;
+		pPtc->FieldFunc = GAPS_APT_Field_Henon_Heiles_FlexEB;
 	}
 	else if(9 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_hairerquad;
+		pPtc->FieldFunc = GAPS_APT_Field_Henon_Heiles_FlexEB_quarterB;
 	}
 	else if(10 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_hairerrandom;
+		pPtc->FieldFunc = GAPS_APT_Field_Henon_Heiles_AsymB;
 	}
 	else if(11 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_EM_non_case1;
+		pPtc->FieldFunc = GAPS_APT_Field_Henon_Heiles_AsymmB;
 	}
 	else if(12 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_EM_int_case1;
+		pPtc->FieldFunc = GAPS_APT_Field_Henon_Heiles_AsymmB_3D;
 	}
 	else if(13 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_EM_N_ed_case1;
+		pPtc->FieldFunc = GAPS_APT_Field_Hairer51_FlexBE;
 	}
 	else if(14 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_EM_N_ox_case1;
+		pPtc->FieldFunc = GAPS_APT_Field_Zjs_E_drift;
 	}
 	else if(15 == Type)
 	{
-		pPtc->FieldFunc = GAPS_APT_Field_EM_N_rg_case1;
-	}
-	else if(16 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_EMhairerEquadBnc3;
-	}
-	else if(17 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_EM_I_type1_case1;
-	}
-	else if(18 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_EM_I_type1_case2;
-	}
-	else if(19 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_Ksymng;
-	}
-	else if(20 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_Henon;
-	}
-	else if(21 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_Henon_ConstantB;
-	}
-	else if(22 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_Henon_B;
-	}
-	else if(23 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_uncompact;
-	}
-	else if(24 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_Henon_Heiles;
-	}
-	else if(25 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_Hairer51;
-	}
-	else if(26 == Type)
-	{
-		pPtc->FieldFunc = GAPS_APT_Field_Hairer51_FlexBE;
+		pPtc->FieldFunc = GAPS_APT_Field_HairerRandomWalk_flexEB;
 	}
 	else
 	{

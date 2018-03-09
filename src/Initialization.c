@@ -5,6 +5,7 @@ int GAPS_APT_ParticleInitialCondition(Gaps_APT_ParticleGroup *pPtcgrp,Gaps_IO_In
 {
 	long i;
 	long num_ptc_init=(pInputs->Init_Num_Particles)/(pPtcgrp->proc_size);
+	//could be zero danger
 	for(i=0;i<num_ptc_init;i++)
 	{
 		Gaps_APT_Particle *pPtc=pPtcgrp->ptcgrp + i;
